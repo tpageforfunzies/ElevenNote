@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ElevenNote.Web.Controllers
 {
-    public class NotesController : Controller
+    public class NoteController : Controller
     {
         // GET: Notes
         public ActionResult Index()
