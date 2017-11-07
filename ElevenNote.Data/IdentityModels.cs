@@ -32,22 +32,23 @@ namespace ElevenNote.Data
             return new ApplicationDbContext();
         }
 
+        public DbSet<Note> Notes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
+            modelBuilder
+                .Configurations
+                .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+
+        }
     }
 
-    public DbSet<Note> Notes { get; set; }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        modelBuilder
-            .Conventions
-            .Remove<PluralizingTableNameConvention>();
-        modelBuilder
-            .Configurations
-            .Add(new IdentityUserLoginConfiguration())
-            .Add(new IdentityUserRoleConfiguration());
-
-    }
-    public class IndentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+    
+    public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
         {
@@ -55,7 +56,7 @@ namespace ElevenNote.Data
         }
     }
 
-    public class IndentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
     {
         public IdentityUserRoleConfiguration()
         {
