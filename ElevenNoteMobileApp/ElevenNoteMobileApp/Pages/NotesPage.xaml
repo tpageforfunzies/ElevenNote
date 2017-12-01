@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElevenNoteMobileApp.Pages.NotesPage"
+             Title="My Notes"
+             NavigationPage.HasBackButton="False">
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="10">
+            <ListView x:Name="lvwNotes" ItemSelected="LvwNotes_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding StarImage}" Text="{Binding Title}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="You don't have any notes. Why don't you add one?" x:Name="lblNoNotes" IsVisible="False" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
